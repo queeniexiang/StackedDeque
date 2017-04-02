@@ -6,7 +6,7 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LLDeque<T> implements Deque{
+public class LLDeque<T> implements Deque<T>{
     DLLNode<T> _front, _end;
     int _size;
 

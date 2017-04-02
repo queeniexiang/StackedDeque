@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public interface Deque<t>{
 
     public boolean add(t value);
