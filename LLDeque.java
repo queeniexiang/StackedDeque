@@ -36,11 +36,13 @@ public class LLDeque<T> implements Deque{
     public boolean contains(Object o){
 	Iterator it = new AscendingIterator();
 	while(it.hasNext()){
-	    DLLNode currentNode = new DLLNode<T>(((T)(it.next())), null, null);  
+	    DLLNode currentNode = new DLLNode<T>(((T)(it.next())), null, null);
+	    
 	    if(currentNode.getValue().equals(o)){
 		return true;
 	    }
 	}
+	
 	return false;
     }
 
@@ -79,6 +81,7 @@ public class LLDeque<T> implements Deque{
 	if(isEmpty()){
 	    return null;
 	}
+	
 	return ((T)(_end));
     }
     
@@ -98,20 +101,55 @@ public class LLDeque<T> implements Deque{
      *Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque).
      *@return T The removed element
      */
-    // public T remove();
+    public T remove() {
+	T retVal = _front.getValue(); 
+
+	_front = _front.getPrev();
+	
+	return retVal; 
+
+    }
+	    
 
     /**
      *Removes the first occurrence of the specified element from this deque.
      *@param Object Desired Object to be removed
      *@return boolean
      */
-    // public boolean remove(Object o);
+    public boolean remove(Object o) {
+	DLLNode temp = _front;
+	int counter = 0; 
+
+	while (! temp.getValue().equals(o) ) {
+	    if (counter > _size) {
+		return false;
+	    }
+	    
+	    counter++;
+	    temp = temp.getPrev();
+	}
+
+	while (counter != 0 ) {
+	    temp = temp.getNext();
+	    temp.setPrev(temp.getPrev()); 
+	    counter--;
+	}
+
+	return true;
+    } 
 
     /**
      *Retrieves and removes the last element of this deque.
      *@return T Removed element
      */
-    // public T removeLast();
+    public T removeLast() {
+	T retVal = _end.getValue(); 
+
+	_end = _end.getNext();
+
+	return retVal;
+    } 
+	
 
     /**
      *Returns the number of elements in this deque.
@@ -121,14 +159,12 @@ public class LLDeque<T> implements Deque{
 	return _size;
     }
 	
-
-    
     /**
      *Returns if the deque is empty.
      *@return boolean
      */
     public boolean isEmpty() {
-	return (this.size() == 0);
+	return (_size == 0);
     } 
 
 
@@ -163,7 +199,7 @@ public class LLDeque<T> implements Deque{
 		throw new IllegalStateException("must call next() beforehand");
 	    }
 	    else{
-		remove(_dummy);
+		remove(_dummy.getValue());
 	    }
 	}
     }
@@ -195,7 +231,7 @@ public class LLDeque<T> implements Deque{
 		throw new IllegalStateException("must call next() beforehand");
 	    }
 	    else{
-		remove(_dummy);
+		remove(_dummy.getValue());
 	    }
 	}
     }
