@@ -66,7 +66,8 @@
 
 ### <b> isEmpty </b> 
 <p> public boolean isEmpty() 
-<p> Returns if the deque is empty.
+<p> Returns if the deque is empty. 
+</p>
 
 
 ##Structure Rationale
