@@ -3,6 +3,8 @@ public class LLDequeDriver{
     public static void main(String[] args){
 	Deque<String> test = new LLDeque<String>();
 
+	LLDeque test = new LLDeque();
+
 	//Adding to the Deque
 	test.add("juan");
 	test.add("too");
@@ -13,9 +15,10 @@ public class LLDequeDriver{
 
 	//Tests for peek()
 	System.out.println("Now testing peek() methods");
-	System.out.print(peek());
-	System.out.print(peekLast());
+	System.out.print(test.peek());
+	System.out.print(test.peekLast());
 
+	/*
 	//Tests for Iterators
 	System.out.println("Now printing ascending iterator");
 	for(Iterator i = test.iterator(); i.hasNext(); ){
@@ -26,7 +29,8 @@ public class LLDequeDriver{
 	for(Iterator k = test.descendingIterator(); k.hasNext(); ){
 	    System.out.println(k.next());
 	}
-
+	
+	*/ 
 	//Test for contains() method
 	System.out.println("Now testing contains() method");
 	String inDeque = "weven";
@@ -34,7 +38,7 @@ public class LLDequeDriver{
 
 	test.add(inDeque);
 
-	System.out.println(contains(inDeque));
-	System.out.println(contains(notInDeque));
+	System.out.println(test.contains(inDeque));
+	System.out.println(test.contains(notInDeque));
     }
 }
