@@ -6,13 +6,13 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LLDeque implements Deque{
-    DLLNode _front, _end;
-    int size;
+public class LLDeque<T> implements Deque{
+    DLLNode<T> _front, _end;
+    int _size;
 
     public LLDeque(){
-	_end = new DLLNode(null, _front, null);
-	_front = new DLLNode(null, null, _end);
+	_end = new DLLNode<T>(null, _front, null);
+	_front = new DLLNode<T>(null, null, _end);
 	_size = 0;
     }
     /**
@@ -36,7 +36,8 @@ public class LLDeque implements Deque{
     public boolean contains(Object o){
 	Iterator it = new AscendingIterator();
 	while(it.hasNext()){
-	    if(_it.next().getValue().equals(o)){
+	    DLLNode currentNode = new DLLNode<T>(((T)(it.next())), null, null);  
+	    if(currentNode.getValue().equals(o)){
 		return true;
 	    }
 	}
@@ -47,7 +48,7 @@ public class LLDeque implements Deque{
      *Returns an iterator over the elements in this deque in proper sequence.
      *@return Iterator
      */
-    public Iterator<t> iterator(){
+    public Iterator<T> iterator(){
 	return (new AscendingIterator());
     }
 
@@ -55,49 +56,49 @@ public class LLDeque implements Deque{
      *Returns an iterator over the elements in this deque in reverse sequential order.
      *@return Iterator
      */
-    public Iterator<t> descendingIterator(){
+    public Iterator<T> descendingIterator(){
 	return (new DescendingIterator());
     }
 
     /**
      *Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
-     *@return t
+     *@return T
      */
-    public t peek(){
+    public T peek(){
 	if (isEmpty()){
 	    return null;
 	}
-	return _front;
+	return ((T)(_front));
     }
 
     /**
      *Retrieves, but does not remove, the last element of this deque, or returns null if this deque is empty.
-     *@return t
+     *@return T
      */
-    public t peekLast(){
+    public T peekLast(){
 	if(isEmpty()){
 	    return null;
 	}
-	return _end;
+	return ((T)(_end));
     }
     
     /**
      *Retrieves, but does not remove, the first element of this deque.
-     *@return t
+     *@return T
      */
-    // public t getFirst();
+    // public T getFirst();
 
     /**
      *Retrieves, but does not remove, the last element of this deque.
-     *@return t
+     *@return T
      */
-    // public t getLast();
+    // public T getLast();
 
     /**
      *Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque).
-     *@return t The removed element
+     *@return T The removed element
      */
-    // public t remove();
+    // public T remove();
 
     /**
      *Removes the first occurrence of the specified element from this deque.
@@ -108,29 +109,35 @@ public class LLDeque implements Deque{
 
     /**
      *Retrieves and removes the last element of this deque.
-     *@return t Removed element
+     *@return T Removed element
      */
-    // public t removeLast();
+    // public T removeLast();
 
     /**
      *Returns the number of elements in this deque.
      *@return int
      */
-    // public int size();
+    public int size() {	
+	return _size;
+    }
+	
 
+    
     /**
      *Returns if the deque is empty.
      *@return boolean
      */
-    // public boolean isEmpty();
+    public boolean isEmpty() {
+	return (this.size() == 0);
+    } 
 
 
     /******************************************************
     -------------------ITERATORS---------------------------
     ******************************************************/
-    private class AscendingIterator implements Iterator<t>{
+    private class AscendingIterator implements Iterator<T>{
 
-	private DLLNode<t> _dummy;
+	private DLLNode<T> _dummy;
 	private boolean _okToRemove;
 
 	public AscendingIterator(){
@@ -142,17 +149,17 @@ public class LLDeque implements Deque{
 	    return (_dummy.getNext() != null);
 	}
 
-	public t next(){
+	public T next(){
 	    _dummy = _dummy.getNext();
 	    if(_dummy == null){
 		throw new NoSuchElementException();
 	    }
 	    _okToRemove = true;
-	    return _dummy
+	    return ((T)(_dummy)); 
 	}
 
 	public void remove(){
-	    if(!_okToRemove()){
+	    if(! _okToRemove ){
 		throw new IllegalStateException("must call next() beforehand");
 	    }
 	    else{
@@ -161,11 +168,11 @@ public class LLDeque implements Deque{
 	}
     }
 
-    private class DescendingIterator implements Iterator<t>{
-	private DLLNode<t> _dummy;
+    private class DescendingIterator implements Iterator<T>{
+	private DLLNode<T> _dummy;
 	private boolean _okToRemove;
 
-	public AscendingIterator(){
+	public DescendingIterator(){
 	    _dummy = new DLLNode(null, _end, null);
 	    _okToRemove = false;
 	}
@@ -174,17 +181,17 @@ public class LLDeque implements Deque{
 	    return (_dummy.getPrev() != null);
 	}
 
-	public t next(){
+	public T next(){
 	    _dummy = _dummy.getPrev();
 	    if(_dummy == null){
 		throw new NoSuchElementException();
 	    }
 	    _okToRemove = true;
-	    return _dummy
-		}
+	    return ((T)(_dummy));
+	}
 
 	public void remove(){
-	    if(!_okToRemove()){
+	    if(! _okToRemove ){
 		throw new IllegalStateException("must call next() beforehand");
 	    }
 	    else{
