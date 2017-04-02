@@ -26,6 +26,4 @@ public interface Deque<t>{
 
     //  public int size();
 
-    //  public boolean isEmpty();
-
 }

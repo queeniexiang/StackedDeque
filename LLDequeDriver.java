@@ -1,7 +1,7 @@
 public class LLDequeDriver{
 
     public static void main(String[] args){
-	Deque test = new LLDeque();
+	Deque<String> test = new LLDeque<String>();
 
 	//Adding to the Deque
 	test.add("juan");
