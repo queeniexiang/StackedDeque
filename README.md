@@ -31,22 +31,22 @@
 
 ### <b> peekLast </b> 
 <p> public T peekLast()
-..* Retrieves the last element of this deque. If the deque is empty, return null. 
+* Retrieves the last element of this deque. If the deque is empty, return null. 
 
 
 ### <b> getFirst </b> 
 <p> public T getFirst()
-..* Retrieves the first element of this deque.
+* Retrieves the first element of this deque.
 
 
 ### <b> getLast </b> 
 <p> public T getLast()
-..* Retrieves the last element of this deque.
+* Retrieves the last element of this deque.
 
 
 ### <b> remove </b> 
 <p> public T remove() 
-..* Retrieves and removes the head or the front of the queue represented by this deque. 
+* Retrieves and removes the head or the front of the queue represented by this deque. 
 
 
 ### <b> remove(Object) </b> 
