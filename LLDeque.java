@@ -20,13 +20,28 @@ public class LLDeque<T> implements Deque{
       *@param value Desired value to be inserted at the end
       *@return boolean stating the success of the operation
      */
-    //public boolean add(t value);
+    public boolean add(t value) {
+	if (_front == null) 
+	    _front = new DLLNode<t>(value, null, _end);	
+	else 
+	    _end = new DLLNode<t>(value, _end.getPrev(), _front);
+	_size ++;
+	return true;
+    }
 
     /**
      *Inserts the specified element at the front of this deque
      *@param value Desired value to be inserted in the front
      */
-    // public void addFirst(t value);
+    public void addFirst(t value) {
+	if (_front == null)
+	    _front = new DLLNode<t>(value, null, _end);
+	else {
+	    _front = new DLLNode<t>(value, null, _front);
+	    _end.setNext(_front);
+	}
+	_size ++;	
+    }
 
     /**
      *Returns true if this deque contains the specified element
@@ -89,13 +104,13 @@ public class LLDeque<T> implements Deque{
      *Retrieves, but does not remove, the first element of this deque.
      *@return T
      */
-    // public T getFirst();
+    public t getFirst() {return _front.getValue();}
 
     /**
      *Retrieves, but does not remove, the last element of this deque.
      *@return T
      */
-    // public T getLast();
+    public T getLast() {return _end.getValue();}
 
     /**
      *Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque).
@@ -199,7 +214,7 @@ public class LLDeque<T> implements Deque{
 		throw new IllegalStateException("must call next() beforehand");
 	    }
 	    else{
-		remove(_dummy.getValue());
+		LLDeque.remove(_dummy.getValue());
 	    }
 	}
     }
