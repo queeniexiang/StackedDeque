@@ -6,18 +6,22 @@ public class LLDequeDriver{
 	Deque<String> test = new LLDeque<String>();
 
 	//Adding to the Deque
-	test.add("juan");
-	test.add("too");
-	test.add("tree");
 	test.add("for");
 	test.add("vive");
 	test.add("zix");
+	test.addFirst("tree");
+	test.addFirst("too");
+	test.addFirst("juan");
 
 	//Tests for peek()
 	System.out.println("Now testing peek() methods");
 	System.out.println(test.peek());
 	System.out.println(test.peekLast());
 
+	//Tests for get()
+	System.out.println("Now testing get() methods");
+	System.out.println(test.getFirst());	
+	System.out.println(test.getLast());
 	
 	//Tests for Iterators
 	System.out.println("Now printing ascending iterator");

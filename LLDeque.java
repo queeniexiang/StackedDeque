@@ -37,7 +37,7 @@ public class LLDeque<T> implements Deque<T>{
      *@param value Desired value to be inserted in the front
      */
     public void addFirst(T value) {
-	if (_front.getValue().equals(null)) 
+	if (_front == null) 
 	    _front = new DLLNode<T>(value, null, _end);
 	else {
 	    _front = new DLLNode<T>(value, null, _front);
