@@ -70,7 +70,7 @@
 </p>
 
 
-##Structure Rationale
+## Structure Rationale
 ### Our Choice: Doubly-linked node-based architecture 
 
 We chose to use doubly-linked nodes as the underlying structure for our deque implementation because we recognized that these nodes already have double-ended characteristics and are equipped with the ability to point to the next or the previous node. With nodes, there are also no size restraints; if we had used array or ArrayLists, there would’ve been a need to expand when full. 

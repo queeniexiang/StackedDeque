@@ -40,5 +40,38 @@ public class LLDequeDriver{
 
 	System.out.println(test.contains(inDeque));
 	System.out.println(test.contains(notInDeque));
+
+	//Tests for Remove Methods
+
+	//Juan 
+	test.remove();
+	System.out.println(test);
+
+	//Too 
+	test.remove();
+	System.out.println(test);
+
+	//Tree
+	test.remove();
+	System.out.println(test);
+
+	//Zix
+	DLLNode temp = new DLLNode("zix", null, null);
+	test.remove(temp);
+	System.out.println(test);
+
+	//Vive
+	test.removeLast();
+	System.out.println(test);
+
+	//For
+	test.removeLast();
+	System.out.println(test);
+
+	//Deque should now be empty: SOP null 
+	test.remove();
+	System.out.println(test);
+	
+	
     }
 }

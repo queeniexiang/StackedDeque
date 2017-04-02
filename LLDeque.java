@@ -163,6 +163,7 @@ public class LLDeque<T> implements Deque<T>{
     public T removeLast() {
 	T retVal = _end.getValue(); 
 	_end = _end.getPrev();
+	_size--; 
 	return retVal;
     } 
 	
