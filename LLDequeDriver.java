@@ -95,7 +95,7 @@ public class LLDequeDriver{
 	System.out.println(test);
 
 	//Remove Iterator Tests
-	LLDeque test2 = new LLDeque();
+	Deque<Integer> test2 = new LLDeque<Integer>();
 	test2.add(1);
 	test2.add(2);
 	test2.add(3);
@@ -112,7 +112,7 @@ public class LLDequeDriver{
 
 	System.out.println(test2);
 
-	LLDeque test3 = new LLDeque();
+	Deque<Integer> test3 = new LLDeque<Integer>();
 	test3.add(1);
 	test3.add(2);
 	test3.add(3);
