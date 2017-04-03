@@ -13,18 +13,11 @@ public class LLDequeDriver{
 	test.addFirst("too");
 	test.addFirst("juan");
 
-<<<<<<< HEAD
 
-=======
->>>>>>> ad0815664de0ae4d61457205695d2f3a2d473b9b
 	//toString test
 	System.out.println("\nNow printing the toString()");
 	System.out.println(test);
-	
-<<<<<<< HEAD
 
-=======
->>>>>>> ad0815664de0ae4d61457205695d2f3a2d473b9b
 	//Tests for peek()
 	System.out.println("\nNow testing peek() methods");
 	System.out.println(test.peek());
@@ -58,14 +51,13 @@ public class LLDequeDriver{
 	System.out.println("\n" + test.contains(notInDeque));
 
 
-<<<<<<< HEAD
 	//Tests for Remove Methods
 	System.out.println("\nNow testing remove() method");
 	//Juan 
-=======
+
 	System.out.println("Now testing remove method");
 	System.out.println("Now removing the first element");
->>>>>>> ad0815664de0ae4d61457205695d2f3a2d473b9b
+
 	test.remove();
 	System.out.println(test);
 
