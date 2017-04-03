@@ -13,15 +13,10 @@ public class LLDequeDriver{
 	test.addFirst("too");
 	test.addFirst("juan");
 
-<<<<<<< HEAD
-	System.out.println(test);
-
-=======
 	//toString test
 	System.out.println("Now printing the toString()");
 	System.out.println(test);
 	
->>>>>>> afa7c9ed37fa543b5eacea22f93af68ff92fd432
 	//Tests for peek()
 	System.out.println("Now testing peek() methods");
 	System.out.println(test.peek());
