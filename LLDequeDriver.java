@@ -13,49 +13,47 @@ public class LLDequeDriver{
 	test.addFirst("too");
 	test.addFirst("juan");
 
-<<<<<<< HEAD
-	System.out.println(test);
 
-=======
 	//toString test
-	System.out.println("Now printing the toString()");
+	System.out.println("\nNow printing the toString()");
 	System.out.println(test);
 	
->>>>>>> afa7c9ed37fa543b5eacea22f93af68ff92fd432
+
 	//Tests for peek()
-	System.out.println("Now testing peek() methods");
+	System.out.println("\nNow testing peek() methods");
 	System.out.println(test.peek());
 	System.out.println(test.peekLast());
 
 	//Tests for get()
-	System.out.println("Now testing get() methods");
+	System.out.println("\nNow testing get() methods");
 	System.out.println(test.getFirst());	
 	System.out.println(test.getLast());
 	
 	//Tests for Iterators
-	System.out.println("Now printing ascending iterator");
+	System.out.println("\nNow printing ascending iterator");
 	for(Iterator i = test.iterator(); i.hasNext(); ){
 	    System.out.println(i.next());
 	}
 
-	System.out.println("Now printing descending iterator");
+	System.out.println("\nNow printing descending iterator");
 	for(Iterator k = test.descendingIterator(); k.hasNext(); ){
 	    System.out.println(k.next());
 	}
 	
 	
 	//Test for contains() method
-	System.out.println("Now testing contains() method");
+	System.out.println("\nNow testing contains() method");
 	String inDeque = "weven";
 	String notInDeque = "ate";
 
 	test.add(inDeque);
 
-	System.out.println(test.contains(inDeque));
-	System.out.println(test.contains(notInDeque));
+	System.out.println("\n" + test.contains(inDeque));
+	System.out.println("\n" + test.contains(notInDeque));
+
 
 	//Tests for Remove Methods
-
+	System.out.println("\nNow testing remove() method");
 	//Juan 
 	test.remove();
 	System.out.println(test);
@@ -68,11 +66,13 @@ public class LLDequeDriver{
 	test.remove();
 	System.out.println(test);
 
+	System.out.println("\nNow testing remove(object) method");
 	//Zix
 	DLLNode temp = new DLLNode("zix", null, null);
 	test.remove(temp);
 	System.out.println(test);
 
+	System.out.println("\nNow testing removeLast() method");
 	//Vive
 	test.removeLast();
 	System.out.println(test);

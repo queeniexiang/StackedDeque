@@ -11,8 +11,7 @@ public class LLDeque<T> implements Deque<T>{
     int _size;
 
     public LLDeque(){
-	_end = new DLLNode<T>(null, _front, null);
-	_front = new DLLNode<T>(null, null, _end);
+        _front = _end = null; 
 	_size = 0;
     }
     /**
@@ -21,13 +20,15 @@ public class LLDeque<T> implements Deque<T>{
       *@return boolean stating the success of the operation
      */
     public boolean add(T value) {
-	if (_front == null) {
-	    _front.setValue(value);
-	    _end.setValue(value);
+	if (_size == 0) {
+	    addFirst(value);
 	}
+	
 	else {
-	    _end  = new DLLNode<T>(value, _end, null);
+	    _end.setNext( new DLLNode (value, _end, null) ); 
+	    _end = _end.getNext();
 	}
+	
 	_size ++;
 	return true;
     }
@@ -37,11 +38,12 @@ public class LLDeque<T> implements Deque<T>{
      *@param value Desired value to be inserted in the front
      */
     public void addFirst(T value) {
-	if (_front == null) 
-	    _front = new DLLNode<T>(value, null, _end);
+	if (_size == 0) 
+	    _front = _end = new DLLNode<T>(value, null, _end);
+    
 	else {
-	    _front = new DLLNode<T>(value, null, _front);
-	    _end.setNext(_front);
+	    _front.setPrev( new DLLNode (value, null, _front) );
+	    _front = _front.getPrev(); 
 	}
 	_size ++;	
     }
@@ -186,11 +188,11 @@ public class LLDeque<T> implements Deque<T>{
     } 
 
     public String toString(){
-	DLLNode temp = new DLLNode(null,null,_front);
+	DLLNode temp = _front; 
 	String retStr = "";
-	while(temp.getNext() != null){
-	    temp = temp.getNext();
+	while(temp != null){
 	    retStr += temp.getValue() + " ";
+	    temp = temp.getNext();
 	}
 	return retStr;
     }
