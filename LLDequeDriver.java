@@ -51,35 +51,30 @@ public class LLDequeDriver{
 
 	//Tests for Remove Methods
 
-	//Juan 
+	System.out.println("Now testing remove method");
+	System.out.println("Now removing the first element");
 	test.remove();
 	System.out.println(test);
 
-	//Too 
+	//Too
+	System.out.println("Now removing the first element");
 	test.remove();
 	System.out.println(test);
 
 	//Tree
+	System.out.println("Now removing the first element");
 	test.remove();
 	System.out.println(test);
 
 	//Zix
-	DLLNode temp = new DLLNode("zix", null, null);
-	test.remove(temp);
+	System.out.println("Now removing for");
+	test.remove("for");
 	System.out.println(test);
 
 	//Vive
+	System.out.println("Now removing the Last element");
 	test.removeLast();
 	System.out.println(test);
-
-	//For
-	test.removeLast();
-	System.out.println(test);
-
-	//Deque should now be empty: SOP null 
-	test.remove();
-	System.out.println(test);
-	
 	
     }
 }
