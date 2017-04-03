@@ -195,7 +195,13 @@ public class LLDeque<T> implements Deque<T>{
 	
 	T retVal = _end.getValue(); 
 	_end = _end.getPrev();
-        _end.setNext(null); 
+        if (_end == null) {
+	    _front = null;
+	    _size --;
+	    return retVal;
+	}
+	else 
+	    _end.setNext(null);	
 	_size--; 
 	return retVal;
     } 
