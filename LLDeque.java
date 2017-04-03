@@ -5,6 +5,7 @@
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+//import java.util.Deque;
 
 public class LLDeque<T> implements Deque<T>{
     DLLNode<T> _front, _end;
@@ -52,6 +53,14 @@ public class LLDeque<T> implements Deque<T>{
     }
 
     /**
+      *Inserts the specified element at the end of this deque if it is possible to do so immediately without violating capacity restrictions.
+      *@param value Desired value to be inserted at the end
+     */
+    public void addLast(T value){
+	add(value);
+    }
+    
+    /**
      *Returns true if this deque contains the specified element
      *@param Object Target object
      *@return boolean
@@ -86,6 +95,14 @@ public class LLDeque<T> implements Deque<T>{
     }
 
     /**
+     *Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque).
+     *@return T
+     */
+    public T element(){
+	return _front.getValue();
+    }
+    
+    /**
      *Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
      *@return T
      */
@@ -94,6 +111,14 @@ public class LLDeque<T> implements Deque<T>{
 	    return null;
 	}
 	return (_front.getValue());
+    }
+
+    /**
+     *Retrieves, but does not remove, the first element of this deque, or returns null if this deque is empty.
+     *@returns T
+     */
+    public T peekFirst(){
+	return peek();
     }
 
     /**
@@ -124,6 +149,76 @@ public class LLDeque<T> implements Deque<T>{
 	return peekLast();
     }
 
+    /**
+     *Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and false if no space is currently available.
+     *@param T value to be offered
+     *@return boolean
+     */
+    public boolean offer(T value){
+	addLast(value);
+	return true;//Linked Lists do not have a capacity restriction
+    }
+
+    /**
+     *Inserts the specified element at the front of this deque unless it would violate capacity restrictions.
+     *@param T value to be offered
+     *@return boolean
+     */
+    public boolean offerFirst(T value){
+	addFirst(value);
+	return true;
+    }
+
+    /**
+     *Inserts the specified element at the end of this deque unless it would violate capacity restrictions.
+     *@param T value to be offered
+     *@return boolean
+     */
+    public boolean offerLast(T value){
+	addLast(value);
+	return true;
+    }
+
+    /**
+     *Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
+     *@return T removed item
+     */
+    public T poll(){
+	return remove();
+    }
+
+    /**
+     *Retrieves and removes the first element of this deque, or returns null if this deque is empty.
+     *@return T removed element
+     */
+    public T pollFirst(){
+	return remove();
+    }
+
+    /**
+     *Retrieves and removes the last element of this deque, or returns null if this deque is empty.
+     *@return T removed element
+     */
+    public T pollLast(){
+	return removeLast();
+    }
+
+    /**
+     *Pops an element from the stack represented by this deque.
+     *@return T
+     */
+    public T pop(){
+	return getFirst();
+    }
+
+    /**
+     *Pushes an element onto the stack represented by this deque (in other words, at the head of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
+     *@param T value to be pushed
+     */
+    public void push(T value){
+	addFirst(value);
+    }
+    
     /**
      *Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque).
      *@return T The removed element
@@ -172,7 +267,55 @@ public class LLDeque<T> implements Deque<T>{
 	    temp = temp.getNext();
 	}
 	return false;
-    } 
+    }
+
+    /**
+     *Removes the first occurrence of the specified element from this deque.
+     *@param Object Desired Object to be removed
+     *@return boolean
+     */
+    public boolean removeFirstOccurrence(Object o){
+	return remove(o);
+    }
+
+    /**
+     *Removes the last occurrence of the specified element from this deque.
+     *@param Object Desired Object to be removed
+     *@return boolean
+     */
+    public boolean removeLastOccurrence(Object o){
+	if (isEmpty()) {
+	    return false;
+	}
+	
+	DLLNode temp = _end;
+	
+	while (temp.getPrev() != null){
+	    if (temp.getValue().equals(o)){//if there is a node that matches an object...
+		if (temp.getNext() != null ) { //if there is a value in front of the target
+		    temp.getPrev().setNext(temp.getNext()); // connect the nodes before and after the target to each other
+		    temp.getNext().setPrev(temp.getPrev()); 
+		}
+
+		else {
+		    _end = temp.getPrev(); 
+		}
+
+		_size--; //deincrement
+		return true;
+	    }
+	    temp = temp.getPrev();
+	}
+	return false;
+    }
+
+    /**
+     *Retrieves and removes the first element of this deque.
+     *@return T
+     */
+    public T removeFirst(){
+	return remove();
+    }
 
     /**
      *Retrieves and removes the last element of this deque.
