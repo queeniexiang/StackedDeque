@@ -21,13 +21,11 @@ public class LLDeque<T> implements Deque<T>{
       *@return boolean stating the success of the operation
      */
     public boolean add(T value) {
-	if (_front == null) {
-	    _front.setValue(value);
-	    _end.setValue(value);
-	}
-	else {
-	    _end  = new DLLNode<T>(value, _end, null);
-	}
+	_end = new DLLNode<T>(value, _end, null);
+	if (_size == 0)
+	    _front = _end;
+	else 
+	    _end.getPrev().setNext(_end);
 	_size ++;
 	return true;
     }
@@ -37,13 +35,13 @@ public class LLDeque<T> implements Deque<T>{
      *@param value Desired value to be inserted in the front
      */
     public void addFirst(T value) {
-	if (_front == null) 
-	    _front = new DLLNode<T>(value, null, _end);
-	else {
-	    _front = new DLLNode<T>(value, null, _front);
-	    _end.setNext(_front);
+	if (_size == 0) {
+	    _front.setValue(value);
+	    _end.setValue(value);
 	}
-	_size ++;	
+	else 
+	    _front = new DLLNode<T>(value, null, _front);
+	_size ++;
     }
 
     /**
