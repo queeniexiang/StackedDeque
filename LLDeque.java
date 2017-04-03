@@ -61,7 +61,6 @@ public class LLDeque<T> implements Deque<T>{
 	Iterator it = new AscendingIterator();
 	while(it.hasNext()){
 	    currentNode.setValue(it.next());
-	    System.out.println(currentNode.getValue());
 	    if( currentNode.getValue().equals(o) ){
 		return true;
 	    }
@@ -193,15 +192,17 @@ public class LLDeque<T> implements Deque<T>{
 	    return null;
 	}
 	
-	T retVal = _end.getValue(); 
-	_end = _end.getPrev();
-        if (_end == null) {
-	    _front = null;
-	    _size --;
-	    return retVal;
+	T retVal = _end.getValue();
+
+	if (_size == 1) {
+	    _front = _end = null;
 	}
-	else 
-	    _end.setNext(null);	
+
+	else {
+	    _end = _end.getPrev();
+	    _end.setNext(null); 
+	}
+
 	_size--; 
 	return retVal;
     } 
@@ -270,16 +271,13 @@ public class LLDeque<T> implements Deque<T>{
 		throw new IllegalStateException("must call next() beforehand");
 	    }
 	    else{
-		if(_size == 1){
-		    remove();
-		}
 
-		else if( _dummy.equals(_front)) {
+		if( _dummy.equals(_front)) {
 		    remove();
 		}
 		
-		else if(_dummy.equals(getLast())) {
-		    removeLast();
+		else if(_dummy.equals(_end)) {	    
+		    removeLast();		    
 		}
 		
 		else{
@@ -318,11 +316,12 @@ public class LLDeque<T> implements Deque<T>{
 		throw new IllegalStateException("must call next() beforehand");
 	    }
 	    else{
-		if(_size == 1){
+		if( _dummy.equals(_front)) {
 		    remove();
 		}
-		if(_dummy.equals(getLast())){
-		    removeLast();
+		
+		else if(_dummy.equals(_end)) {	    
+		    removeLast();		    
 		}
 		else{
 		    _dummy.getPrev().setNext((_dummy.getNext()));

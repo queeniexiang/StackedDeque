@@ -78,8 +78,7 @@ public class LLDequeDriver{
 	System.out.println(test);
 
 	System.out.println("Now removing zix");
-	test.remove("zix");
-	
+	test.remove("zix");	
 	
 	System.out.println("\nNow testing removeLast() method");
 	//Weven
@@ -91,9 +90,47 @@ public class LLDequeDriver{
 	System.out.println(test.removeLast());
 	System.out.println(test);
 
-	System.out.println("Empty List Remove : SOP null");
+	System.out.println("Empty Deque Remove : SOP null");
 	System.out.println(test.removeLast());
 	System.out.println(test);
+
+	//Remove Iterator Tests
+	LLDeque test2 = new LLDeque();
+	test2.add(1);
+	test2.add(2);
+	test2.add(3);
+	test2.add(4);
+
+	System.out.println(test2);
+	
+	Iterator it = test2.iterator();
+	while(it.hasNext()){
+	    if((int)it.next()%2 == 0){
+		it.remove();
+	    }
+	}
+
+	System.out.println(test2);
+
+	LLDeque test3 = new LLDeque();
+	test3.add(1);
+	test3.add(2);
+	test3.add(3);
+	test3.add(4);
+
+	System.out.println(test3);
+	
+	Iterator it2 = test3.descendingIterator();
+	while(it2.hasNext()){
+	    if((int)it2.next()%2 == 0){
+		it2.remove();
+	    }
+	}
+
+	System.out.println(test3);
+
+	
+	
 	
     }
 }
