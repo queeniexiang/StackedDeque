@@ -23,6 +23,7 @@ public class LLDeque<T> implements Deque<T>{
 
 	if (_size == 0) {
 	    addFirst(value);
+	    return true; 
 	}
 	
 	else {
@@ -132,9 +133,11 @@ public class LLDeque<T> implements Deque<T>{
 	if(isEmpty()){
 	    return null;
 	}
+	
 	else{
 	    T retVal = _front.getValue(); 
 	    _front = _front.getNext();
+	    _front.setPrev(null); 
 	    _size--;
 	    return retVal;
 	}
@@ -147,12 +150,32 @@ public class LLDeque<T> implements Deque<T>{
      *@return boolean
      */
     public boolean remove(Object o) {
+	if (isEmpty()) {
+	    return false;
+	}
+	
 	DLLNode temp = _front;
 	
 	while (temp.getNext() != null){
-	    if(temp.getValue().equals(o)){
-		temp.getPrev().setNext(temp.getNext());
-		temp.getNext().setPrev(temp.getPrev());
+	    /*
+	    System.out.println("==============");
+	    System.out.println(temp.getValue());
+	    System.out.println(temp.getValue().equals(o));
+	    System.out.println("==============");
+	    */
+	    
+	    if (temp.getValue().equals(o)){
+		if (temp.getPrev() != null ) {
+		    temp.getPrev().setNext(temp.getNext());
+		    temp.getNext().setPrev(temp.getPrev());
+		    //System.out.println(temp.getPrev().getNext());
+		    //System.out.println(temp.getNext().getPrev()); 
+		}
+
+		else {
+		    _front = temp.getNext();
+		}
+
 		_size--;
 		return true;
 	    }
@@ -166,8 +189,13 @@ public class LLDeque<T> implements Deque<T>{
      *@return T Removed element
      */
     public T removeLast() {
+	if (isEmpty()) {
+	    return null;
+	}
+	
 	T retVal = _end.getValue(); 
 	_end = _end.getPrev();
+        _end.setNext(null); 
 	_size--; 
 	return retVal;
     } 

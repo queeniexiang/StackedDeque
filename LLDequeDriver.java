@@ -72,15 +72,27 @@ public class LLDequeDriver{
 	System.out.println(test);
 
 	System.out.println("\nNow testing remove(object) method");
-	//Zix
+	//For 
 	System.out.println("Now removing for");
 	test.remove("for");
 	System.out.println(test);
 
+	System.out.println("Now removing zix");
+	test.remove("zix");
+	
+	
 	System.out.println("\nNow testing removeLast() method");
+	//Weven
+	System.out.println("Now removing the Last element");
+	System.out.println(test.removeLast());
+	System.out.println(test);
 	//Vive
 	System.out.println("Now removing the Last element");
-	test.removeLast();
+	System.out.println(test.removeLast());
+	System.out.println(test);
+
+	System.out.println("Empty List Remove : SOP null");
+	System.out.println(test.removeLast());
 	System.out.println(test);
 	
     }
