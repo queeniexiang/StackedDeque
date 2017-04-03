@@ -1,6 +1,7 @@
 # StackedDeque
 
 ## Method Selections: 
+We exluded almost all of the redundant methods that accomplish the same goal such as add() and addLast(). The only ones we left in were the peek() and get() methods just because some of us prefer to use get() when developing as opposed to peek().
 
 ### <b> add </b> 
 <p> public boolean add(T value) 
@@ -73,4 +74,4 @@
 ## Structure Rationale
 ### Our Choice: Doubly-linked node-based architecture 
 
-We chose to use doubly-linked nodes as the underlying structure for our deque implementation because we recognized that these nodes already have double-ended characteristics and are equipped with the ability to point to the next or the previous node. With nodes, there are also no size restraints; if we had used array or ArrayLists, there would’ve been a need to expand when full. 
+We chose to use doubly-linked nodes as the underlying structure for our deque implementation for 2 primary reasons: unrestricted size and runtime. With nodes you never have to worry about size because they are linked objects which means that you can incrementally add them one by one in the front or the back. The runtime was the huge decider in our architecture descision. With an arrayList or array, adding to the front (assuming the structure is _front -> _end) is O(n) and removing from the front can be O(1) with a simple optimization. Adding and removing from the end is O(1). With a doubly linked node architecture, they are all O(1). When adding to the front you are simply making the front's previous node a new node, an O(1) operation.
