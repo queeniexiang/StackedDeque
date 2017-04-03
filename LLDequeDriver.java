@@ -13,6 +13,8 @@ public class LLDequeDriver{
 	test.addFirst("too");
 	test.addFirst("juan");
 
+	System.out.println(test);
+
 	//Tests for peek()
 	System.out.println("Now testing peek() methods");
 	System.out.println(test.peek());

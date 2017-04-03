@@ -26,7 +26,7 @@ public class LLDeque<T> implements Deque<T>{
 	    _end.setValue(value);
 	}
 	else {
-	    _end = new DLLNode<T>(value, _end, null);
+	    _end  = new DLLNode<T>(value, _end, null);
 	}
 	_size ++;
 	return true;
@@ -52,11 +52,12 @@ public class LLDeque<T> implements Deque<T>{
      *@return boolean
      */
     public boolean contains(Object o){
+	DLLNode currentNode = new DLLNode(null, null, null);
 	Iterator it = new AscendingIterator();
 	while(it.hasNext()){
-	    DLLNode currentNode = new DLLNode<T>((T)it.next(), null, null);
-	    
-	    if(currentNode.getValue().equals(o)){
+	    currentNode.setValue(it.next());
+	    System.out.println(currentNode.getValue());
+	    if( currentNode.getValue().equals(o) ){
 		return true;
 	    }
 	}
@@ -204,8 +205,11 @@ public class LLDeque<T> implements Deque<T>{
 	}
 
 	public T next(){
-	    _dummy = _dummy.getNext();
-	    if(_dummy == null){
+	    if ( hasNext() ) {
+		_dummy = _dummy.getNext();
+	    }
+	    
+	    else {
 		throw new NoSuchElementException();
 	    }
 	    _okToRemove = true;
@@ -221,9 +225,15 @@ public class LLDeque<T> implements Deque<T>{
 		if(_size == 1){
 		    remove();
 		}
-		if(_dummy.equals(getLast())){
+
+		else if( _dummy.equals(_front)) {
+		    remove();
+		}
+		
+		else if(_dummy.equals(getLast())) {
 		    removeLast();
 		}
+		
 		else{
 		    _dummy.getPrev().setNext((_dummy.getNext()));
 		    _dummy.getNext().setPrev(_dummy.getPrev());
