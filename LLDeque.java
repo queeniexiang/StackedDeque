@@ -184,6 +184,16 @@ public class LLDeque<T> implements Deque<T>{
 	return (_size == 0);
     } 
 
+    public String toString(){
+	DLLNode temp = new DLLNode(null,null,_front);
+	String retStr = "";
+	while(temp.getNext() != null){
+	    temp = temp.getNext();
+	    retStr += temp.getValue() + " ";
+	}
+	return retStr;
+    }
+	    
 
     /******************************************************
     -------------------ITERATORS---------------------------
