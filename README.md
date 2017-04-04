@@ -1,5 +1,4 @@
-# Team StackedDeque: 
-Queenie Xiang, James Smith, and Herman Lin Present To You…
+# Team StackedDeque: Queenie Xiang, James Smith, and Herman Lin Present To You…
 # All Hands on Deque!
 
 ## Method Selections: 
