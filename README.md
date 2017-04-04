@@ -1,7 +1,7 @@
 # StackedDeque
 
 ## Method Selections: 
-We exluded almost all of the redundant methods that accomplish the same goal such as add() and addLast(). The only ones we left in were the peek() and get() methods just because some of us prefer to use get() when developing as opposed to peek().
+We included every method from the Deque interface itself. If we were given an extra day, we would have implemented the methods that the true Deque interface inherits from the Collection interface: addAll, clear, containsAll, equals, hashCode, removeAll, retainAll, toArray, toArray. For a complete outline of our LLDeque class, please refer to the java API documentation in the repo we created using JavaDoc comments.
 
 ### <b> add </b> 
 <p> public boolean add(T value) 
