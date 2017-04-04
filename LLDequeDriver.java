@@ -78,7 +78,8 @@ public class LLDequeDriver{
 	System.out.println(test);
 
 	System.out.println("Now removing zix");
-	test.remove("zix");	
+	test.remove("zix");
+	System.out.println(test);
 	
 	System.out.println("\nNow testing removeLast() method");
 	//Weven

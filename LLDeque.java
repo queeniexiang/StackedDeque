@@ -68,6 +68,7 @@ public class LLDeque<T> implements Deque<T>{
     public boolean contains(Object o){
 	T dummyNext; //create dummy variable to store what is returned by it.next()
 	Iterator it = new AscendingIterator(); //create an iterator for ease of iteration through nodes
+
 	while(it.hasNext()){//while you havent gone through every element...
 	    dummyNext = (T)it.next();//give dummy var the next value
 	    if( dummyNext.equals(o) ){//if this value is equal to the given object...
@@ -223,14 +224,10 @@ public class LLDeque<T> implements Deque<T>{
      *Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque).
      *@return T The removed element
      */
-<<<<<<< HEAD
+    
     public T remove(){ 
 	//If deque is empty, return null 
 	if(isEmpty()){
-=======
-    public T remove(){
-	if(isEmpty()){ //if it is empty, you cant remove anything
->>>>>>> 1243676833438ee64dcee22c78e9e6fa3622b8c2
 	    return null;
 	}
 
@@ -260,7 +257,6 @@ public class LLDeque<T> implements Deque<T>{
 	DLLNode temp = _front;
 	
 	while (temp.getNext() != null){
-<<<<<<< HEAD
 	    //If the pointer node's value matches the value of the object: 
 	    if (temp.getValue().equals(o)){
 		//If pointer node is not the front node: 
@@ -275,18 +271,8 @@ public class LLDeque<T> implements Deque<T>{
 		else {
 		    //The new front will be old _front.getNext() 
 		    _front = temp.getNext();
-=======
-	    if (temp.getValue().equals(o)){//if there is a node that matches an object...
-		if (temp.getPrev() != null ) { //if there is a value in front of the target
-		    temp.getPrev().setNext(temp.getNext()); // connect the nodes before and after the target to each other
-		    temp.getNext().setPrev(temp.getPrev()); 
 		}
-
-		else {
-		    _front = temp.getNext(); 
->>>>>>> 1243676833438ee64dcee22c78e9e6fa3622b8c2
-		}
-
+		
 		_size--; //deincrement
 		return true;
 	    }
@@ -300,7 +286,7 @@ public class LLDeque<T> implements Deque<T>{
      *@param Object Desired Object to be removed
      *@return boolean
      */
-    public boolean removeFirstOccurrence(Object o){
+	    public boolean removeFirstOccurrence(Object o){
 	return remove(o);
     }
 
@@ -355,24 +341,16 @@ public class LLDeque<T> implements Deque<T>{
 	
 	T retVal = _end.getValue(); //save the return value from the last element
 
-<<<<<<< HEAD
 	//If there is only one element left, point all elements to null so deque is now empty
-	if (_size == 1) {
-=======
+
 	if (_size == 1) {//if there is only one element, disband the linkedList
->>>>>>> 1243676833438ee64dcee22c78e9e6fa3622b8c2
 	    _front = _end = null;
 	}
 
 	else {
-<<<<<<< HEAD
 	    //New end will now be the element previous of the old end 
-	    _end = _end.getPrev();
-	    _end.setNext(null); 
-=======
 	    _end = _end.getPrev(); //make the new end the node before the current end
 	    _end.setNext(null);  //disconect the nodes
->>>>>>> 1243676833438ee64dcee22c78e9e6fa3622b8c2
 	}
 
 	_size--; //deincrement
