@@ -1,4 +1,5 @@
-# StackedDeque
+# Team StackedDeque: Queenie Xiang, James Smith, and Herman Lin Presents To You…
+# All Hands on Deque!
 
 ## Method Selections: 
 We included every method from the Deque interface itself. If we were given an extra day, we would have implemented the methods that the true Deque interface inherits from the Collection interface: addAll, clear, containsAll, equals, hashCode, removeAll, retainAll, toArray, toArray. For a complete outline of our LLDeque class, please refer to the java API documentation in the repo we created using JavaDoc comments.
