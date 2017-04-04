@@ -128,11 +128,13 @@ public class LLDeque<T> implements Deque<T>{
      *Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque).
      *@return T The removed element
      */
-    public T remove(){
+    public T remove(){ 
+	//If deque is empty, return null 
 	if(isEmpty()){
 	    return null;
 	}
-	
+
+	//Else, set the new front to _front.getNext() and remove linkage to the old front node 
 	else{
 	    T retVal = _front.getValue(); 
 	    _front = _front.getNext();
@@ -149,29 +151,28 @@ public class LLDeque<T> implements Deque<T>{
      *@return boolean
      */
     public boolean remove(Object o) {
+	//If deque is empty, return null 
 	if (isEmpty()) {
 	    return false;
 	}
-	
+
+	//Creates a pointer node that will traverse the deque 
 	DLLNode temp = _front;
 	
 	while (temp.getNext() != null){
-	    /*
-	    System.out.println("==============");
-	    System.out.println(temp.getValue());
-	    System.out.println(temp.getValue().equals(o));
-	    System.out.println("==============");
-	    */
-	    
+	    //If the pointer node's value matches the value of the object: 
 	    if (temp.getValue().equals(o)){
+		//If pointer node is not the front node: 
 		if (temp.getPrev() != null ) {
+		    //Remove linkage of the current node's previous and next nodes from current
+		    //Reset their linkage so they now point to each other as the previous or next node
+		    //Current node is now no longer linked to any element of the deque (thus removing it from the deque) 
 		    temp.getPrev().setNext(temp.getNext());
 		    temp.getNext().setPrev(temp.getPrev());
-		    //System.out.println(temp.getPrev().getNext());
-		    //System.out.println(temp.getNext().getPrev()); 
 		}
 
 		else {
+		    //The new front will be old _front.getNext() 
 		    _front = temp.getNext();
 		}
 
@@ -188,17 +189,20 @@ public class LLDeque<T> implements Deque<T>{
      *@return T Removed element
      */
     public T removeLast() {
+	//If deque is empty, return null 
 	if (isEmpty()) {
 	    return null;
 	}
 	
 	T retVal = _end.getValue();
 
+	//If there is only one element left, point all elements to null so deque is now empty
 	if (_size == 1) {
 	    _front = _end = null;
 	}
 
 	else {
+	    //New end will now be the element previous of the old end 
 	    _end = _end.getPrev();
 	    _end.setNext(null); 
 	}

@@ -127,10 +127,6 @@ public class LLDequeDriver{
 	    }
 	}
 
-	System.out.println(test3);
-
-	
-	
-	
+	System.out.println(test3);     
     }
 }
