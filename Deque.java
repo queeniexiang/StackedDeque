@@ -1,48 +1,48 @@
 import java.util.Iterator;
 
-public interface Deque<t>{
+public interface Deque<T>{
 
-    public boolean add(t value);
+    public boolean add(T value);
 
-    public void addFirst(t value);
+    public void addFirst(T value);
 
-    public void addLast(t value);
+    public void addLast(T value);
 
-    public boolean contains(t value);
+    public boolean contains(T value);
 
-    public Iterator<t> iterator();
+    public Iterator<T> iterator();
 
-    public Iterator<t> descendingIterator();
+    public Iterator<T> descendingIterator();
 
-    public t element();
+    public T element();
 
-    public t peek();
+    public T peek();
 
-    public t peekFirst();
+    public T peekFirst();
 
-    public t peekLast();
+    public T peekLast();
 
-    public t getFirst();
+    public T getFirst();
 
-    public t getLast();
+    public T getLast();
 
-    public boolean offer(t value);
+    public boolean offer(T value);
 
-    public boolean offerFirst(t value);
+    public boolean offerFirst(T value);
 
-    public boolean offerLast(t value);
+    public boolean offerLast(T value);
 
-    public t poll();
+    public T poll();
 
-    public t pollFirst();
+    public T pollFirst();
 
-    public t pollLast();
+    public T pollLast();
 
-    public t pop();
+    public T pop();
 
-    public void push(t value);
+    public void push(T value);
 
-    public t remove();
+    public T remove();
 
     public boolean remove(Object o);
 
@@ -50,9 +50,9 @@ public interface Deque<t>{
 
     public boolean removeLastOccurrence(Object o);
 
-    public t removeFirst();
+    public T removeFirst();
 
-    public t removeLast();
+    public T removeLast();
 
     public int size();
 
